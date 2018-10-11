@@ -1,14 +1,19 @@
 package ru.admin.oleg.simulator;
 
-import ru.admin.oleg.core.Sensors;
+import ru.admin.oleg.core.Sensor;
 
-
-public class SensorsSimulator implements Sensors {
+/* This class is simulating sensor's work*/
+public class SensorSimulator implements Sensor, SensorSetter{
 
     private String emai;
     private int status;
     private int value;
     private String name;
+    private SimulatorStrategy simulatorStrategy;
+
+
+
+
 
 
     @Override
@@ -47,5 +52,10 @@ public class SensorsSimulator implements Sensors {
         this.name = name;
     }
 
-
+    public void setSimulatorStrategy(SimulatorStrategy simulatorStrategy) {
+        this.simulatorStrategy = simulatorStrategy;
+    }
+    public void emulate() {
+        this.simulatorStrategy.doSimulate(this);
+    }
 }

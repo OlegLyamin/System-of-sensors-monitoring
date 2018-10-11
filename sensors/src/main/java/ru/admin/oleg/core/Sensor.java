@@ -1,7 +1,7 @@
 package ru.admin.oleg.core;
 
 /*Only for get information*/
-public interface Sensors {
+public interface Sensor {
 
     String getEmai();
     int getStatus();
