@@ -6,6 +6,7 @@ public interface Sensors {
     String getEmai();
     int getStatus();
     int getValue();
-    int getType();
+    String getName();
+
 
 }
