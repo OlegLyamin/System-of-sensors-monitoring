@@ -16,26 +16,21 @@ public class DiscreteStrategy implements SimulatorStrategy {
     }
     @Override
     public void doSimulate(SensorSetter sensor) {
-        if(this.pulse % this.counter == 0)
-        {
-            if(this.value == 0)
-            {
+        if (this.pulse % this.counter == 0 ) {
+            if (this.value == 0) {
                 this.value = 1;
-            }else
-            {
+            } else {
                 this.value = 0;
             }
             this.pulse = 1;
-        }else
-        {
-            this.pulse++;
+        } else {
+            this.pulse ++;
         }
         sensor.setValue(value);
-
     }
 
     @Override
     public void setPulseCounter(int counter) {
-
+        this.counter = counter;
     }
 }

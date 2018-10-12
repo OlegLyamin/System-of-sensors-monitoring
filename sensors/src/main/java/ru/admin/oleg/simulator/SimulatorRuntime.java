@@ -24,6 +24,11 @@ public class SimulatorRuntime extends Thread implements SensorRuntime {
     public void run(){
         while (true){
             this.emulate();
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -32,15 +37,14 @@ public class SimulatorRuntime extends Thread implements SensorRuntime {
         this.sensors
                 .stream()
                 .forEach(sensor -> {
-                            if (sensor instanceof SensorSimulator) {
-                                SensorSimulator fs = (SensorSimulator) sensor;
-                                fs.emulate();
-                                Log.info("INTERVAL = 1000" );
-                                Log.info(fs.getEmai() + "=" + fs.getValue());
-                            }
-                        }
-
-
-                );
+                    if (sensor instanceof SensorSimulator) {
+                        SensorSimulator s = (SensorSimulator) sensor;
+                        s.emulate();
+                        //log.info("INTERVAL:" + Integer.toString(this.runtimeInterval));
+                        //log.info(s.getImei() + " = " + s.getValue());
+                    }
+                });
     }
+
+
 }
